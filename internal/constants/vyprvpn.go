@@ -3,7 +3,7 @@ package constants
 import (
 	"net"
 
-	"github.com/qdm12/private-internet-access-docker/internal/models"
+	"github.com/qdm12/gluetun/internal/models"
 )
 
 const (
@@ -89,6 +89,7 @@ func VyprvpnServers() []models.VyprvpnServer {
 		{Region: "USA New York", IPs: []net.IP{{209, 99, 63, 18}}},
 		{Region: "USA San Francisco", IPs: []net.IP{{209, 99, 95, 18}}},
 		{Region: "USA Seattle", IPs: []net.IP{{209, 99, 94, 18}}},
+		{Region: "USA Washington", IPs: []net.IP{{209, 99, 62, 18}}},
 		{Region: "USA Washington DC", IPs: []net.IP{{209, 99, 62, 18}}},
 		{Region: "Ukraine", IPs: []net.IP{{128, 90, 96, 64}}},
 		{Region: "United Kingdom", IPs: []net.IP{{209, 99, 22, 18}}},

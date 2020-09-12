@@ -25,11 +25,13 @@ type ServerSelection struct { //nolint:maligned
 	// Cyberghost
 	Group string `json:"group"`
 
-	// Mullvad
+	// Mullvad, PureVPN
 	Country string `json:"country"`
 	City    string `json:"city"`
-	ISP     string `json:"isp"`
-	Owned   bool   `json:"owned"`
+
+	// Mullvad
+	ISP   string `json:"isp"`
+	Owned bool   `json:"owned"`
 
 	// Mullvad, Windscribe
 	CustomPort uint16 `json:"customPort"`
@@ -73,11 +75,16 @@ func (p *ProviderSettings) String() string {
 		number = fmt.Sprintf("%d", p.ServerSelection.Number)
 	}
 	switch strings.ToLower(string(p.Name)) {
-	case "private internet access":
+	case "private internet access old":
 		settingsList = append(settingsList,
 			"Region: "+p.ServerSelection.Region,
 			"Encryption preset: "+p.ExtraConfigOptions.EncryptionPreset,
 			"Port forwarding: "+p.PortForwarding.String(),
+		)
+	case "private internet access":
+		settingsList = append(settingsList,
+			"Region: "+p.ServerSelection.Region,
+			"Encryption preset: "+p.ExtraConfigOptions.EncryptionPreset,
 		)
 	case "mullvad":
 		settingsList = append(settingsList,
@@ -109,6 +116,12 @@ func (p *ProviderSettings) String() string {
 		settingsList = append(settingsList,
 			"Region: "+p.ServerSelection.Region,
 			"Number: "+number,
+		)
+	case "purevpn":
+		settingsList = append(settingsList,
+			"Region: "+p.ServerSelection.Region,
+			"Country: "+p.ServerSelection.Country,
+			"City: "+p.ServerSelection.City,
 		)
 	default:
 		settingsList = append(settingsList,
